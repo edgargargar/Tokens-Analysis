@@ -5,9 +5,9 @@ Simple example of how to use Python to get data from the Ethereum blockchain.
 
 ## Files
 * **tokens.ipynb**: Jupyter notebook with the code used (Python)
-* **tokens.csv** (input file): List of tokens to be analyzed
+* **tokens.csv** (input file): List of tokens to analyze
 * **./datasets/balances.csv** (output file): Matrix with the balance of tokens of different addresses
-* **./datasets/{TOKEN_NAME}.csv** (output dile): Raw data of user transactions with the token
+* **./datasets/{TOKEN_NAME}.csv** (output file): Raw data of user transactions with the token
 
 ## Code
 ```python
