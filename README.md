@@ -435,11 +435,13 @@ Calculamos la correlación entre los tokens en función las cuentas que operan e
 ```
 > cor(mydata3)
 ```
+``
           from        Augur      Digix        Golem
 from   1.00000000  0.012476091 0.02059404 -0.015118285
 Augur  0.01247609  1.000000000 0.10363220 -0.002783285
 Digix  0.02059404  0.103632200 1.00000000  0.031423973
 Golem -0.01511829 -0.002783285 0.03142397  1.000000000
+``
 
 En el resultado se puede ver que no hay correlación lineal en la operativa de los Tokens al estar los valores cercanos a cero. El hecho de que alguien opere con un Token no indica que opere o no en otro Token.
 
@@ -451,11 +453,12 @@ colnames(mydata4)<-c("Golem","Digix","Augur")
 
 >mydata4
 ```
-           Golem      Digix        Augur
+``
+          Golem      Digix        Augur
 Golem  1.000000000 0.03142397 -0.002783285
 Digix  0.031423973 1.00000000  0.103632200
 Augur -0.002783285 0.10363220  1.000000000
-
+``
 Pintamos un grafo de correlación entre Tokens (ver fichero cor.jpg)
 ```
 library(qgraph)
