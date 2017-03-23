@@ -403,38 +403,38 @@ mydatadigix<-read.csv("/datasets/Digix.csv",header=TRUE)
 mydatagolem<-read.csv("/datasets/Golem.csv",header=TRUE)
 ```
 Añadimos un nuevo campo a los datos de los ficheros con el nombre del Token
-``
+```
 mydataaugur$token<-"Augur"
 mydatadigix$token<-"Digix"
 mydatagolem$token<-"Golem" 
-``
+```
 Juntamos en un único data frame los datos de transacciones de tres tokens
-``
+```
 mydata<-rbind(mydataaugur,mydatadigix,mydatagolem)
-``
+```
 Damos formato al campo fecha de la transacción
-``
+```
 mydata$ts<-as.POSIXct(as.character(mydata$timeStamp),origin="1970-01-01",tz="GMT") 
-``
+```
 Añadimos un número secuencial para cada cuenta de origen en orden temporal
-``
+```
 mydata2<-cbind(mydata, rank=ave(as.numeric(mydata$ts), mydata$from, FUN=rank))
-``
+```
 Exportamos los datos a un fichero csv
-
+```
 write.csv(mydata2, file="../mydatatokens.csv")
-
+```
 Ponemos los valores del campo token como columnas cuyo valor será el número de transacciones por cuenta de origen
-``
+```
 library(reshape2)
 mydata3<-dcast(mydata2, from ~ token)
 
 write.csv(mydata3, file="../mygraphtokens.csv")
-``
+```
 Calculamos la correlación entre los tokens en función las cuentas que operan en ellas
-``
+```
 > cor(mydata3)
-``
+```
           from        Augur      Digix        Golem
 from   1.00000000  0.012476091 0.02059404 -0.015118285
 Augur  0.01247609  1.000000000 0.10363220 -0.002783285
@@ -444,20 +444,20 @@ Golem -0.01511829 -0.002783285 0.03142397  1.000000000
 En el resultado se puede ver que no hay correlación lineal en la operativa de los Tokens al estar los valores cercanos a cero. El hecho de que alguien opere con un Token no indica que opere o no en otro Token.
 
 Mejoramos el formato de la tabla anterior para reducirlo al cruce de Tokens.
-``
+```
 mydata4<-cor(cbind(mydata3$Golem,mydata3$Digix,mydata3$Augur))
 rownames(mydata4)<-c("Golem","Digix","Augur")
 colnames(mydata4)<-c("Golem","Digix","Augur")
 
 >mydata4
-``
+```
            Golem      Digix        Augur
 Golem  1.000000000 0.03142397 -0.002783285
 Digix  0.031423973 1.00000000  0.103632200
 Augur -0.002783285 0.10363220  1.000000000
 
 Pintamos un grafo de correlación entre Tokens (ver fichero cor.jpg)
-``
+```
 library(qgraph)
 Q<-qgraph(cor(mydata3))> 
-''
+```
