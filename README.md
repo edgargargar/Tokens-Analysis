@@ -393,10 +393,11 @@ for project, txs in tokenTxs.items():
 balances.to_csv("./datasets/balances.csv", sep=',')
 ```
 # R Data Analysis
-El objetivo es estructurar la información extraida de la Blockchain y analizarla mejor.
+El objetivo es estructurar la información extraída de la Blockchain y analizarla mejor.
 La información a tratar procede de varios Tokens desarrollados en Ethereum y vamos a analizar cómo se relacionan en función de las cuentas que operan con ellas.
 
 Primeramente, importamos los datos de los ficheros:
+
 mydataaugur<-read.csv("C:/Users/windows7/Documents/ethereum/datasets/Augur.csv",header=TRUE)
 mydatadigix<-read.csv("C:/Users/windows7/Documents/ethereum/datasets/Digix.csv",header=TRUE)
 mydatagolem<-read.csv("C:/Users/windows7/Documents/ethereum/datasets/Golem.csv",header=TRUE)
@@ -421,14 +422,14 @@ mydata2<-cbind(mydata, rank=ave(as.numeric(mydata$ts), mydata$from, FUN=rank))
 
 Exportamos los datos a un fichero csv
 
-write.csv(mydata2, file="C:/Users/windows7/Documents/ethereum/mydatatokens.csv")
+write.csv(mydata2, file="../mydatatokens.csv")
 
 Ponemos los valores del campo token como columnas cuyo valor será el número de transacciones por cuenta de origen
 
 library(reshape2)
 mydata3<-dcast(mydata2, from ~ token)
 
-write.csv(mydata3, file="C:/Users/windows7/Documents/ethereum/mygraphtokens.csv")
+write.csv(mydata3, file="../mygraphtokens.csv")
 
 Calculamos la correlación entre los tokens en función las cuentas que operan en ellas
 
@@ -453,7 +454,7 @@ Golem  1.000000000 0.03142397 -0.002783285
 Digix  0.031423973 1.00000000  0.103632200
 Augur -0.002783285 0.10363220  1.000000000
 
-Pintamos un grafo de correlación entre Tokens
+Pintamos un grafo de correlación entre Tokens (ver fichero cor.jpg)
 
 library(qgraph)
 Q<-qgraph(cor(mydata3))> 
