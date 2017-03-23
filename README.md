@@ -453,12 +453,13 @@ colnames(mydata4)<-c("Golem","Digix","Augur")
 
 >mydata4
 ```
-``
-          Golem      Digix        Augur
-Golem  1.000000000 0.03142397 -0.002783285
-Digix  0.031423973 1.00000000  0.103632200
-Augur -0.002783285 0.10363220  1.000000000
-``
+
+|row|Golem|Digix|Augur|
+|---|---|---|---|
+|Golem|1.000000000|0.03142397|-0.002783285|
+|Digix|0.031423973|1.00000000|0.103632200|
+|Augur|-0.002783285|0.10363220|1.000000000|
+
 Pintamos un grafo de correlación entre Tokens (ver fichero cor.jpg)
 ```
 library(qgraph)
