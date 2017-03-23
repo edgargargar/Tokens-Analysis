@@ -435,8 +435,8 @@ Calculamos la correlación entre los tokens en función las cuentas que operan e
 > cor(mydata3)
 ```
 
-||from|Augur|Digix|Golem|
-|-----------------------|
+|row|from|Augur|Digix|Golem|
+|---|---|---|---|---|
 |from|1.00000000 |0.012476091 |0.02059404|-0.015118285 |
 |Augur|0.01247609|1.000000000 |0.10363220|-0.002783285 |
 |Digix|0.02059404|0.103632200 |1.00000000|0.031423973 |
